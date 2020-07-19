@@ -3,14 +3,18 @@ Dockerfile which builds and environment with pyHSPF and Flask
 
 ## NLDAS2 Authentication
 You must set a username and password for NLDAS2 downloads by using environment variables
-    docker run -dp 5000:5000 --rm -e USERNAME='your username' -e PASSWORD 'your password' flippingbinary/flask-with-pyhspf
+
+`docker run -dp 5000:5000 --rm -e USERNAME='your username' -e PASSWORD 'your password' flippingbinary/flask-with-pyhspf`
 
 ## Persistent storage for cache
 If you want persistent storage, you'll also need to mount a directory to /home/flask/cache
 You can mount a folder named "cache" in the present directory with the Windows command below:
-    docker run -dp 5000:5000 --rm -e USERNAME='your username' -e PASSWORD 'your password' --mount src="$(pwd)/cache",target=/home/flask/cache,type=bind flippingbinary/flask-with-pyhspf
+
+`docker run -dp 5000:5000 --rm -e USERNAME='your username' -e PASSWORD 'your password' --mount src="$(pwd)/cache",target=/home/flask/cache,type=bind flippingbinary/flask-with-pyhspf`
+
 The Linux/MacOS equivalent might look like this, but I haven't tested it (yet):
-    docker run -dp 5000:5000 --rm -e USERNAME='your username' -e PASSWORD 'your password' -v "$(pwd)/cache":/home/flask/cache flippingbinary/flask-with-pyhspf
+
+`docker run -dp 5000:5000 --rm -e USERNAME='your username' -e PASSWORD 'your password' -v "$(pwd)/cache":/home/flask/cache flippingbinary/flask-with-pyhspf`
 
 ## Persistent container
 If you want to keep the container around to run automatically or something, remove the "--rm" argument.
